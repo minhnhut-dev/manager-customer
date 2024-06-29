@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= form_tag send_sms_notifications_path do %>
+        <div class="mb-3">
+          <label for="trackingCode" class="form-label">List phone want to send notifications</label>
+          <%= text_field_tag :phones, "" , class: "form-control", placeholder: "ex: 091107xxxx,...", required: true %>
+          <div id="trackingHelp" class="form-text fw-bolder">The phones are shared by comoma</div>
+        </div>
+        <div class="mb-3">
+          <label for="trackingCode" class="form-label">Content</label>
+          <textarea class="form-control" rows="7" required name="content" ></textarea>
+        </div>
+      <button type="submit" class="btn btn-primary">Send notification</button>
+      <% end %>
+    </div>
+  </div>
+</div>

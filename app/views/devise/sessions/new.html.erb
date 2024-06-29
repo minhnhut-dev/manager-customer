@@ -1,0 +1,28 @@
+<div class="container-xxl position-relative bg-white d-flex p-0">
+  <div class="container-fluid">
+    <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+      <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+        <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h3>Sign In</h3>
+            </div>
+            <div class="form-floating mb-3">
+              <%= f.email_field :email, class: "form-control", placeholder: "name@example.com" %>
+                <%= f.label "Email addres" %>
+            </div>
+            <div class="form-floating mb-4">
+              <%= f.password_field :password, class: "form-control",  placeholder: "Password"%>
+              <%= f.label "Password" %>
+            </div>
+              <%= f.submit "Sign in", class: "btn btn-primary py-3 w-100 mb-4" %>
+            </div>
+            </div>
+          <% end %>
+
+    </div>
+  </div>
+  <!-- Sign In End -->
+
+</div>
+
