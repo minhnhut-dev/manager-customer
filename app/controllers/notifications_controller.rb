@@ -4,7 +4,6 @@ class NotificationsController < ApplicationController
   end
 
   def send_sms
-    byebug
     phone_numbers = params[:phones].split(',')
     content = params[:content]
 

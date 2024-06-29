@@ -11,7 +11,7 @@ class SendSmsServices
   def execute!
     account_sid = ENV["TWILIO_ACCOUNT_SID"]
     auth_token = ENV["TWILIO_AUTH_TOKEN"]
-    byebug
+
     validate_phones
 
     return { success: false, error: 'No phone number provided.' } if @phones.blank?
