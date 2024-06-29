@@ -6,9 +6,14 @@ class SendSmsServices
   def initialize(message, phones = [])
     @message = message
     @phones = phones
+
   end
 
   def execute!
+    send_sms
+  end
+
+  def send_sms
     account_sid = ENV["TWILIO_ACCOUNT_SID"]
     auth_token = ENV["TWILIO_AUTH_TOKEN"]
 
@@ -24,7 +29,9 @@ class SendSmsServices
         from: '+1 415 233 9307',
         body: @message
       )
+
       if message.status == 'queued' || message.status == 'sent'
+        save_notifications
         return { success: true, message: 'SMS sent successfully.' }
       else
         return { success: false, error: 'Failed to send SMS.' }
@@ -35,6 +42,7 @@ class SendSmsServices
   end
 
   private
+
   def validate_phones
     return if @phones.blank?
      @phones.each do |phone|
@@ -43,4 +51,13 @@ class SendSmsServices
         end
       end
   end
+
+  def save_notifications
+    @phones.each do |phone|
+      customer = Customer.find_by(phone: phone)
+      next if customer.blank?
+      Notification.create!(content: @message,  customer_id: customer.id, status: :active)
+    end
+  end
+
 end
