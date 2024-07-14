@@ -1,6 +1,4 @@
 name: Add new actions
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
