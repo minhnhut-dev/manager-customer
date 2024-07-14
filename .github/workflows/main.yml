@@ -22,8 +22,6 @@ jobs:
     - name: Install dependencies
       run: |
         rm -rf Gemfile.lock
-        bundle update
-        gem install bundler
         bundle install
 
     - name: Run RuboCop
