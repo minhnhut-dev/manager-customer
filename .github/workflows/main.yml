@@ -21,6 +21,7 @@ jobs:
 
     - name: Install dependencies
       run: |
+        bundle update
         gem install bundler
         bundle install
 
