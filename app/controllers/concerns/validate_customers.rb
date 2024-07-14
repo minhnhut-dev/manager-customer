@@ -7,7 +7,7 @@ module ValidateCustomers
   end
 
   def custom_validation_method
-    errors.add(:base, "Custom validation error message") unless some_condition_is_met?
+    errors.add(:base, 'Custom validation error message') unless some_condition_is_met?
   end
 
   private

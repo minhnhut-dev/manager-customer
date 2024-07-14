@@ -11,11 +11,8 @@ class NotificationsController < ApplicationController
       flash[:notice] = result[:message]
       redirect_to notifications_path
     else
-      flash[:alert] = result[:error]
+      flash[:notice] = result[:error]
       redirect_to notifications_path
     end
   end
-
-  private
-
 end

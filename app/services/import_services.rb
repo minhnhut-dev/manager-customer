@@ -21,16 +21,16 @@ class ImportServices
   private
 
   def validate_excel_format
-    unless @file.content_type.in?(%w(application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.ms-excel))
+    unless @file.content_type.in?(%w[application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+                                     application/vnd.ms-excel])
       raise 'Invalid file format. Please upload an Excel file.'
     end
   end
 
   def create_customer(row)
     customer = Customer.create(row)
-    unless customer.persisted?
-      return customer.errors.full_messages.to_sentence
-    end
-    nil  # Return nil if no errors
+    return customer.errors.full_messages.to_sentence unless customer.persisted?
+
+    nil # Return nil if no errors
   end
 end

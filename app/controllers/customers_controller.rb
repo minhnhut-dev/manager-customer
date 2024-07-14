@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   before_action :authenticate_user!
   before_action :show, only: [:show]
 
-  layout "application"
+  layout 'application'
 
   def index
     respond_to do |format|
@@ -25,6 +25,7 @@ class CustomersController < ApplicationController
 
   def import_customer
     return unless params[:file].present?
+
     file = params[:file]
     import_service = ImportServices.new(file)
     import_service.import_customers
@@ -40,5 +41,4 @@ class CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name, :email, :phone)
   end
-
 end

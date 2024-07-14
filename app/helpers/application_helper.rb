@@ -1,6 +1,6 @@
 module ApplicationHelper
   def format_date_vietnam(date)
-    date.strftime("%d/%m/%Y")
+    date.strftime('%d/%m/%Y')
   end
 
   def current_url
