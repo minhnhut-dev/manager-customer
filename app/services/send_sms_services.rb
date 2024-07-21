@@ -15,23 +15,22 @@ class SendSmsServices
 
   def send_sms
     validate_phones!
-
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 
-    begin
-      message = @client.messages.create(
-        to: '+84911079197',
-        from: '+1 415 233 9307',
-        body: @message
-      )
+    message = @client.messages.create(
+      to: '+84911079197',
+      from: '+1 415 233 9307',
+      body: @message
+    )
 
-      return { success: false, error: 'Failed to send SMS.' } unless message.status == 'queued' || message.status == 'sent'
-
-      save_notifications
-      { success: true, message: 'SMS sent successfully.' }
-    rescue Twilio::REST::RestError => e
-      { success: false, error: e.message }
+    unless message.status == 'queued' || message.status == 'sent'
+      return { success: false, error: 'Failed to send SMS.' }
     end
+
+    save_notifications
+    { success: true, message: 'SMS sent successfully.' }
+  rescue Twilio::REST::RestError => e
+    { success: false, error: e.message }
   end
 
   private
