@@ -16,7 +16,7 @@ class SendSmsServices
   def send_sms
     validate_phones!
 
-    @client = Twilio::REST::Client.new(@account_sid, @auth_token)
+                @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 
     begin
       message = @client.messages.create(
