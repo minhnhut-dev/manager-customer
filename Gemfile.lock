@@ -98,7 +98,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
-    ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.5)
@@ -138,6 +138,8 @@ GEM
       net-protocol
     nio4r (2.7.3)
     nokogiri (1.15.6-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.6-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.25.1)
@@ -265,6 +267,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
