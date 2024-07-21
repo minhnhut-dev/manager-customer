@@ -25,9 +25,7 @@ class SendSmsServices
         body: @message
       )
 
-      unless message.status == 'queued' || message.status == 'sent'
-        return { success: false, error: 'Failed to send SMS.' }
-      end
+      return { success: false, error: 'Failed to send SMS.' } unless message.status == 'queued' || message.status == 'sent'
 
       save_notifications
       { success: true, message: 'SMS sent successfully.' }
@@ -41,10 +39,9 @@ class SendSmsServices
   def validate_phones!
     return if @phones.blank?
 
-                @phones.each do |phone|
+    @phones.each do |phone|
       next if phone.strip =~ /\A0\d{9}\z/
 
-      # raise StandardError.new("#{phone} is not a valid phone number")
       return { success: false, error: "#{phone} is not a valid phone number" }
     end
   end
