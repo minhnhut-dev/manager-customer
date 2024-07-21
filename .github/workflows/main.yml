@@ -8,7 +8,7 @@ on:
 
 jobs:
   rubocop:
-    name: Rubocop with Reviewdog
+    name: Rubocop
     runs-on: ubuntu-latest
 
     steps:
@@ -21,16 +21,31 @@ jobs:
         ruby-version: '2.7.3'  # Specify your Ruby version here
         bundler-cache: true  # Automatically cache and install gems
 
+    - name: Run RuboCop
+      run: bundle exec rubocop app/
+
+  reviewdog:
+    name: Reviewdog
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'  # This ensures the job only runs on pull requests
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.7.3'
+        bundler-cache: true
+
     - name: Run RuboCop with Reviewdog
       uses: reviewdog/action-rubocop@v2
       with:
         rubocop_version: gemfile
-        rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile # Add any extensions you use
+        rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
         github_token: ${{ secrets.GITHUB_TOKEN }}
         reporter: github-pr-review
-        fail_on_error: false # Set to true if you want the workflow to fail on RuboCop errors
-        filter_mode: nofilter # This will report all issues, not just the diff
-        # rubocop_flags: --auto-correct # This will suggest fixes
-
-    - name: Run RuboCop
-      run: bundle exec rubocop app/
+        fail_on_error: false
+        filter_mode: nofilter
+        rubocop_flags: --auto-correct # This will suggest fixes
