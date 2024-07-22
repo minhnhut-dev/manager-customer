@@ -1,4 +1,4 @@
-name: Ruby Lint and Review
+name: Ruby Lint and Review dog
 
 on:
   push:
@@ -22,12 +22,12 @@ jobs:
         bundler-cache: true  # Automatically cache and install gems
 
     - name: Run RuboCop
-      run: bundle exec rubocop app/
+      run: bundle exec rubocop app/ # tạm thời chỉ chạy cho thư mục app sau này sẽ update lại
 
   reviewdog:
     name: Reviewdog
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'  # This ensures the job only runs on pull requests
+    if: github.event_name == 'pull_request'
 
     steps:
     - name: Checkout code
