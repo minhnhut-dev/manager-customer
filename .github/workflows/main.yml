@@ -19,7 +19,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '2.7.3'  # Specify your Ruby version here
-        bundler-cache: true  # Automatically cache and install gems
+        # bundler-cache: true  # Automatically cache and install gems
 
     - name: Run RuboCop
       run: bundle exec rubocop app/ # tạm thời chỉ chạy cho thư mục app sau này sẽ update lại
@@ -37,7 +37,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '2.7.3'
-        bundler-cache: true
+        # bundler-cache: true
 
     - name: Run RuboCop with Reviewdog
       uses: reviewdog/action-rubocop@v2
