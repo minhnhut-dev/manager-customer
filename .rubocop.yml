@@ -1,5 +1,5 @@
 # inherit_from: ../.rubocop.yml
-require: rubocop-performance
+# require: rubocop-performance
 
 Style/Encoding:
   Enabled: false

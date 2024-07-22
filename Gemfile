@@ -24,7 +24,7 @@ gem 'dotenv-rails'
 
 gem 'rubocop', require: false
 
-gem 'rubocop-performance'
+# gem 'rubocop-performance'
 
 
 # Use Redis adapter to run Action Cable in production
