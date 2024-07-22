@@ -48,6 +48,6 @@ jobs:
         reporter: github-pr-review
         fail_on_error: false
         filter_mode: nofilter
-        rubocop_flags: '-a --format github'  # This flag enables auto-correction suggestions
+        rubocop_flags: '--format json'  # This flag enables auto-correction suggestions
         level: warning
         suggest_and_apply: true  # This enables automatic suggestion application

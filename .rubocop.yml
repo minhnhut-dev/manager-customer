@@ -1,4 +1,5 @@
 # inherit_from: ../.rubocop.yml
+require: rubocop-performance
 
 Style/Encoding:
   Enabled: false
@@ -26,6 +27,18 @@ Layout/LineLength:
 
 Metrics/MethodLength:
   Max: 20
+
+Layout/IndentationStyle:
+  EnforcedStyle: tab # or space
+
+Layout/TrailingEmptyLines:
+  EnforcedStyle: final_newline
+
+Lint/RedundantStringCoercion:
+  Enabled: true
+
+Style/RedundantPercentQ:
+  Enabled: true
 
 AllCops:
   Include:
